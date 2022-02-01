@@ -1,0 +1,22 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/assets/style.css">
+    <script type="text/javascript">
+        var reply;
+        onmessage = function (init) {
+            console.log(init.data);
+            reply = init.ports[0];
+            reply.onmessage = function (msg) {
+                console.log(msg.data);
+            }
+        }
+        function send(msg) {
+            reply.postMessage(msg);
+        }
+    </script>
+</head>
+<body>
+<p>This file was loaded from in-app content</p>
+<p><span onclick="send('TODO')">TODO</span></p>
+</body>
+</html>
